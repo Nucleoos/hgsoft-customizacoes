@@ -16,23 +16,26 @@
             	</field>
             	
             	<field name="amount_gross" position="attributes">
-            		<attribute name="string">Valores Bruto:</attribute>
+            		<attribute name="string">Valores Bruto</attribute>
 				</field>
 				<field name="amount_untaxed" position="attributes">
-            		<attribute name="string">Sem Impostos:</attribute>
+            		<attribute name="string">Sem Impostos</attribute>
 				</field>
 				<label for="amount_total" position="attributes">
-            		<attribute name="string">Total Geral:</attribute>
+            		<attribute name="string">Total Geral</attribute>
 				</label>
 				
 				<field name="validity_date" position="attributes">
             		<attribute name="string">Data de expiração:</attribute>
 				</field>
 				<field name="sequence" widget="handle" position="after">
-					<field name="sequence" attrs="{'readonly':True}" />
+					<field name="line_number" attrs="{'readonly':True}" />
 				</field>
 				<field name="order_line" position="attributes">
 					<attribute name="context">{'ref_ids':order_line}</attribute>
+				</field>
+				<field name="amount_gross" position="before">
+					<field name="total_items" attrs="{'readonly':True}" />
 				</field>
 				
             </field>
