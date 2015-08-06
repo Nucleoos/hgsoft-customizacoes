@@ -22,7 +22,7 @@
     'author' : "TrustCode",
     'description':'Módulo Base HgSoft',
     'website': 'http://www.trustcode.com.br',
-    'depends' : ['base', 'crm' , 'nfe', 'nfe_attach', 'l10n_br_base', 'l10n_br_data_base', 'l10n_br_account',
+    'depends' : ['base', 'crm' , 'l10n_br_base', 'l10n_br_data_base', 'l10n_br_account',
                  'l10n_br_data_account_product','l10n_br_sale'],   
     'data' : [
         'data/base_data.xml',
