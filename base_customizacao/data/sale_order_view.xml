@@ -31,6 +31,10 @@
 				<field name="sequence" widget="handle" position="after">
 					<field name="sequence" attrs="{'readonly':True}" />
 				</field>
+				<field name="order_line" position="attributes">
+					<attribute name="context">{'ref_ids':order_line}</attribute>
+				</field>
+				
             </field>
         </record>
       
