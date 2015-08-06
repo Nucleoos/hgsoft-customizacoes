@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+        <record id="view_bom_corpo_res_partner" model="ir.ui.view">
+            <field name="name">view.bom.corpo.res.partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="l10n_br_base.view_l10n_br_base_partner_form"/>
+            <field name="arch" type="xml">
+				<field name="title" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>				
+				<field name="user_id" position="attributes">
+					<attribute name="attrs">{ 'invisible': [('customer', '=', True)] }</attribute>
+				</field>
+				<field name="lang" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</field>
+				<page string="Contacts" position="attributes">
+					<attribute name="attrs">{'invisible': 0}</attribute>
+					<attribute name="string">Endereços</attribute>
+				</page>
+				<field name="date" position="replace">
+					<field name="date" string="Data de Cadastro"/>
+				</field>				
+				<xpath expr="//page[@name='sales_purchases']/group/group[1]" position="attributes">
+					<attribute name="attrs">{ 'invisible': [('supplier', '=', False)] }</attribute>
+				</xpath>
+				<xpath expr="//page[@name='sales_purchases']/group/group[2]" position="attributes">
+					<attribute name="invisible">1</attribute>
+				</xpath>
+				
+				
+			</field>
+		</record>
+
+	</data>
+</openerp>
