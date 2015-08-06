@@ -14,9 +14,9 @@
 				<field name="amount_untaxed" position="attributes">
             		<attribute name="string">Sem Impostos:</attribute>
 				</field>
-				<field name="amount_total" position="attributes">
+				<label for="amount_total" position="attributes">
             		<attribute name="string">Total Geral:</attribute>
-				</field>
+				</label>
             </field>
         </record>
       
