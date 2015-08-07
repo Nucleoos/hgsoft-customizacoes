@@ -14,7 +14,17 @@
             		<field name="payment_term" />
             		<field name="user_id" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'account.group_account_invoice', 'base.group_sale_salesman_all_leads']}"/>
             	</field>
-            	
+
+            <field name="client_order_ref" position="attributes">
+		<attribute name="string">Pedido Cliente</attribute>
+	    </field>
+            <field name="template_id" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+	    <field name="pricelist_id" position="attributes">
+		<attribute name="invisible">1</attribute>
+	    </field>
+	
             	<field name="amount_gross" position="attributes">
             		<attribute name="string">Valores Bruto</attribute>
 				</field>

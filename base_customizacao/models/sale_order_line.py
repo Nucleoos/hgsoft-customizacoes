@@ -36,7 +36,7 @@ class SaleOrder(models.Model):
                 total += line.product_uom_qty
             order.total_items = total
         
-    total_items = fields.Float(string="Total de quantidades",
+    total_items = fields.Float(string="Qtde Total",
                                digits=(18,2),compute='_count_quantity')
     
     
