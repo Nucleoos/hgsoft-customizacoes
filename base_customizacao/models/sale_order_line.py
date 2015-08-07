@@ -16,7 +16,7 @@ class SaleOrdeLine(models.Model):
             line.line_number = index
             index += 1
     
-    line_number = fields.Integer(string="Indice", compute='_get_line_numbers', store=True)
+    line_number = fields.Integer(string="Item", compute='_get_line_numbers', store=True)
     
     @api.model
     def default_get(self, fields_list):
