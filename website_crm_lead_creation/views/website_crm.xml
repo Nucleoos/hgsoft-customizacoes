@@ -67,6 +67,11 @@
 		            </div>
 		        </div>
 		    </xpath>
+		    <xpath expr="//div[@class='form-group']" position="before">
+		    	<p class="alert alert-danger" t-if="erros">
+                    <t t-esc="erros"/>
+                </p>
+		    </xpath>
 		</template>
 				
 		

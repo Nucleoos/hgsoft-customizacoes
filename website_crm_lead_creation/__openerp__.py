@@ -25,7 +25,8 @@
     'depends' : ['website_crm' ,'l10n_br_base', 'l10n_br_data_base', 'l10n_br_account',
                  'l10n_br_data_account_product','l10n_br_sale'],   
     'data' : [
-        'data/website_crm.xml',
+        'views/website_crm.xml',
+        'views/email_template.xml',
         'data/lead2opportunity_partner.xml',       
     ],
     'installable': True,
