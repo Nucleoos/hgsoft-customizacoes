@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 '''
 Created on 06/08/2015
 
@@ -30,11 +30,14 @@ class CrmLead(models.Model):
                                                      'login': partner.email,
                                                      'name': partner.name})
                 # if self.env.context.get('send_email', False):
-                user.action_reset_password(context={'create_user': True})
+                users = self.env['res.users'].with_context(
+                    {'create_user': True}).search([('login', '=', user[1])])
+                users[0].action_reset_password()
             except SignupError:
-                raise Warning('Um usuário já existe com o endereço de e-mail cadastrado')
+                raise Warning(
+                    'Um usuário já existe com o endereço de e-mail cadastrado')
             except Exception as ex:
                 raise Warning(
-                    'Erro ao converter oportunidade:\n{0}'.format(
-                        ex.message))
+                    u'Erro ao converter oportunidade:\n{0}'.format(
+                        ex.message or ex.value))
         return partner_id
