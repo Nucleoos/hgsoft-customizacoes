@@ -12,7 +12,7 @@
 		
 		<record id="auth_signup.default_template_user" model="res.users">
 	            <field name="name">Usuário Padrão</field>	
-		    <field name="action_id">334</field>	
+		    <field name="action_id" eval="ref('website_sale.menu_shop')"/>
 		</record>
 		
 	</data>
