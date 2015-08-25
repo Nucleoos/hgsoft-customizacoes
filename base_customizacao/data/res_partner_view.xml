@@ -18,7 +18,7 @@
 				</field>
 				<page string="Contacts" position="attributes">
 					<attribute name="attrs">{'invisible': 0}</attribute>
-					<attribute name="string">Endereços</attribute>
+					<attribute name="string">Contatos/Endereços</attribute>
 				</page>
 				<field name="date" position="replace">
 					<field name="date" string="Data de Cadastro"/>
