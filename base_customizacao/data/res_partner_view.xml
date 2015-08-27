@@ -11,7 +11,7 @@
 					<attribute name="invisible">1</attribute>
 				</field>				
 				<field name="user_id" position="attributes">
-					<attribute name="attrs">{ 'invisible': [('customer', '=', True)] }</attribute>
+					<attribute name="attrs">{ 'invisible': [('customer', '=', False)] }</attribute>
 				</field>
 				<field name="lang" position="attributes">
 					<attribute name="invisible">1</attribute>
@@ -24,7 +24,7 @@
 					<field name="date" string="Data de Cadastro"/>
 				</field>				
 				<xpath expr="//page[@name='sales_purchases']/group/group[1]" position="attributes">
-					<attribute name="attrs">{ 'invisible': [('supplier', '=', False)] }</attribute>
+					<attribute name="attrs">{ 'invisible': [('supplier', '=', True)] }</attribute>
 				</xpath>
 				<xpath expr="//page[@name='sales_purchases']/group/group[2]" position="attributes">
 					<attribute name="invisible">1</attribute>
