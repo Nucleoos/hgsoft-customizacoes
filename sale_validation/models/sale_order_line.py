@@ -42,16 +42,19 @@ class SaleOrder(models.Model):
                 items_to_remove.append(item)
 
             index += 1
-        
-        # Aqui está o problema, filtra os itens corretamente, porém não retorna os 
+
+        # Aqui está o problema, filtra os itens corretamente, porém não retorna os
         # itens corretamente depois.
         self.order_line = self.order_line.filtered(
             lambda r: r not in items_to_remove)
-        
 
 
 class SaleOrdeLine(models.Model):
     _inherit = 'sale.order.line'
+
+    _sql_constraints = [('unique_product_per_sale',
+                         'unique(order_id, product_id, state)',
+                         u'Existem itens duplicados na cotação')]
 
     def product_id_change_with_wh(self, cr, uid, ids, pricelist, product, qty=0,
                                   uom=False, qty_uos=0, uos=False, name='', partner_id=False,
