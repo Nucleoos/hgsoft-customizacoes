@@ -29,15 +29,25 @@ class SaleOrder(models.Model):
 
     @api.onchange('order_line')
     def _onchange_order_line(self):
-        for item in reversed(self.order_line):
-            quantity = sum(
-                1 for it in self.order_line if it.product_id.id == item.product_id.id)
-            if quantity > 1:
-                item.unlink()
-                break
-            print quantity
+        index = 0
+        items_to_remove = []
+        for item in self.order_line:
 
-        return {}
+            quantity = 0
+            for x in range(index, 0, -1):
+                if item.product_id.id == self.order_line[x].product_id.id:
+                    quantity += 1
+
+            if quantity > 1:
+                items_to_remove.append(item)
+
+            index += 1
+        
+        # Aqui está o problema, filtra os itens corretamente, porém não retorna os 
+        # itens corretamente depois.
+        self.order_line = self.order_line.filtered(
+            lambda r: r not in items_to_remove)
+        
 
 
 class SaleOrdeLine(models.Model):
