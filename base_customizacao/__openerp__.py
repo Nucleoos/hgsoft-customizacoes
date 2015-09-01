@@ -30,5 +30,5 @@
         'data/sale_order_view.xml',
     ],
     'installable': True,
-    'auto_install':False
+    'auto_install':True
 }

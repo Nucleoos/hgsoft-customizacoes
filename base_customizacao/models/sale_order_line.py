@@ -10,16 +10,16 @@ class SaleOrdeLine(models.Model):
     _inherit = 'sale.order.line'
     
     @api.multi
-    def _get_line_numbers(self):
+    def _get_line_numbers(self):        
         index = 1
         for line in self[0].order_id.order_line:
             line.line_number = index
             index += 1
     
-    line_number = fields.Integer(string="Item", compute='_get_line_numbers', store=True)
+    line_number = fields.Integer(string="Item", compute='_get_line_numbers')
     
     @api.model
-    def default_get(self, fields_list):
+    def default_get(self, fields_list):        
         vals = super(SaleOrdeLine, self).default_get(fields_list)
         if 'ref_ids' in self.env.context.keys():
             vals.update({'line_number': len(self.env.context['ref_ids']) + 1 })
