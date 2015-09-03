@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<openerp>
+	<data>
+
+	<template id="hgsoft_assets_frontend" inherit_id="website.assets_frontend" name="Shop HG">
+	  <xpath expr="." position="inside">
+	      <script type="text/javascript" src="/sale_validation/static/src/js/website_sale.js"></script>	      
+	  </xpath>
+	</template>
+
+		<template id="hgsoft_site_payment" inherit_id="website_sale.payment"
+			customize_show="True" name="Website sale payment">
+			<xpath expr="//div[@id='payment_method']" position="before">
+				
+				<style type="text/css">
+					#payment_method div.col-lg-5.col-sm-6 { display:none;}
+				</style>
+				
+				<div t-attf-class="form-group col-lg-5">
+                  <label class="control-label" for="state_id" style="font-weight: normal">Condiçao de Pagamento Solicitada:</label>
+                  <select id="payment_term" name="payment_term" class="form-control">
+                    <option value="0">Negociar com o Vendedor</option>
+                    <t t-foreach="payment_terms or []" t-as="term">
+                      <option t-att-value="term.id" 
+                      		 t-att-selected="term.id == payment_term_id">
+                        <t t-esc="term.name"/>
+                      </option>
+                    </t>
+                  </select>
+                </div>
+				
+			</xpath>
+		</template>
+	</data>
+</openerp>
+

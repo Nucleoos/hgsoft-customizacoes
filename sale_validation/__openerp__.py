@@ -23,7 +23,9 @@
     'description':'Módulo Base HgSoft',
     'website': 'http://www.trustcode.com.br',
     'depends' : ['sale'],   
-    'data' : [        
+    'data' : [
+        'views/site_payment.xml',
+        'views/sale_order_view.xml'        
     ],
     'installable': True,
     'auto_install':False

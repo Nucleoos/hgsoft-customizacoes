@@ -55,6 +55,7 @@ class SaleOrdeLine(models.Model):
     _sql_constraints = [('unique_product_per_sale',
                          'unique(order_id, product_id, state)',
                          u'Existem itens duplicados na cotação')]
+    
 
     def product_id_change_with_wh(self, cr, uid, ids, pricelist, product, qty=0,
                                   uom=False, qty_uos=0, uos=False, name='', partner_id=False,
