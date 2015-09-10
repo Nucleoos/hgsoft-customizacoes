@@ -18,7 +18,7 @@ from openerp.addons.website_sale.controllers.main import website_sale
 class WebsiteSale(website_sale):
 
     @http.route(['/shop/payment_term/<int:term_id>'], type='json', auth="public", website=True)
-    def payment_transaction(self, term_id):
+    def payment_term(self, term_id):
         cr, uid, context = request.cr, request.uid, request.context
         payment_obj = request.registry.get('payment.acquirer')
         sale_order_obj = request.registry.get('sale.order')
