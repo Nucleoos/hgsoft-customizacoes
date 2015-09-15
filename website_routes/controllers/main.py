@@ -29,3 +29,12 @@ class RoutesRedirect(http.Controller):
         print 'passou na categoria:'
         print categoria
         return http.redirect_with_hash('http://www.google.com')
+    
+    @http.route(['/<string:pagina>/'], type='http', auth="public",  website=True)
+    def redirect_paginas(self, pagina):
+        print 'passou na pagina'
+        print pagina
+        return http.redirect_with_hash('/')
+        
+        
+        
