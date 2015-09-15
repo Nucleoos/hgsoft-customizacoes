@@ -28,6 +28,11 @@ class ProductTemplate(models.Model):
     
     rota = fields.Char(u'Url antiga', size=200)
     
+class ProductCategory(models.Model):
+    _inherit = 'product.category'
+    
+    rota = fields.Char(u'Url antiga', size=200)
+    
 
     
 
