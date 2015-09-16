@@ -17,15 +17,16 @@
 #along with this program.  If not, see <http://www.gnu.org/licenses/>.        #
 ###############################################################################
 {
-    'name' : "Website Rotas",
-    'version' : "1.0",
-    'author' : "TrustCode",
-    'description':'Módulo que cria rotas para os produtos',
+    'name': "Website Rotas",
+    'version': "1.0",
+    'author': "TrustCode",
+    'description': 'Módulo que cria rotas para os produtos',
     'website': 'http://www.trustcode.com.br',
-    'depends' : ['sale'],   
-    'data' : [
-        'views/product_template_view.xml',               
+    'depends': ['sale'],
+    'data': [
+        'views/product_template_view.xml',
+        'views/page_redirect_view.xml',
     ],
     'installable': True,
-    'auto_install':False
+    'auto_install': False
 }

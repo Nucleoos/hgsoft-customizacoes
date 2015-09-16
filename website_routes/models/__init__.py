@@ -5,3 +5,4 @@ Created on Jun 11, 2015
 '''
 
 from . import product_product
+from . import page_redirect

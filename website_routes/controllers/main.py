@@ -42,6 +42,10 @@ class RoutesRedirect(http.Controller):
     @http.route(
         ['/<string:pagina>/'], type='http', auth="public", website=True)
     def redirect_paginas(self, pagina):
-        print 'passou na pagina'
-        print pagina
-        return http.redirect_with_hash('/')
+        prod_env = request.env['page.redirect'].sudo()
+        item = prod_env.search([('rota', '=', pagina)])
+        if item:            
+            return http.redirect_with_hash(u'/%s' % pagina.nova_rota)
+        else:
+            return request.website.render("website.404")        
+

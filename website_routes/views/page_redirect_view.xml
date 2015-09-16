@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="view_page_redirect_form">
+            <field name="name">Redirecionamento de páginas</field>
+            <field name="model">page.redirect</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Configurar o redirecionamento">                    
+                    <group string="Redirecionamento">
+                        <field name="rota"  />
+                        <field name="nova_rota" />                                                                      
+                    </group>                    
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_page_redirect_tree">
+            <field name="name">Redirecionamento de páginas</field>
+            <field name="model">page.redirect</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Redirecionamentos">
+                    <field name="rota" />                                 
+                    <field name="nova_rota" />   
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_page_redirect_form">
+            <field name="name">Redirecionamento de páginas</field>
+            <field name="res_model">page.redirect</field>
+            <field name="view_type">form</field>
+            <field name='view_mode'>tree,form</field>
+            <field name='view_id' ref='view_page_redirect_tree'/>
+        </record>
+        <menuitem parent="base.next_id_2" action="action_page_redirect_form" id="page_redirect_menu" sequence="40"/>
+
+    </data>
+</openerp>
