@@ -33,8 +33,8 @@ class RoutesRedirect(http.Controller):
     def redirect_category(self, categoria):
         prod_env = request.env['product.category'].sudo()
         item = prod_env.search([('rota', '=', categoria)])
-        if item:
-            url = "/shop/category/%s" % slug(category)
+        if len(item) >= 1:
+            url = "/shop/category/%s" % slug(item[0])
             return http.redirect_with_hash(url)
         else:
             return request.website.render("website_sale.404")
