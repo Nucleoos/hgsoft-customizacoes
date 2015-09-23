@@ -17,7 +17,7 @@ class crm_lead2opportunity_partner(models.TransientModel):
     def _create_partner(self, lead_id, action, partner_id, context=None):
         context = dict(self.env.context or {})
         context.update({'create_user': self.create_user,
-                   'send_email': self.send_mail})
+                        'send_email': self.send_mail})
         self = self.with_context(context)
-        super(crm_lead2opportunity_partner, self)._create_partner(
+        return super(crm_lead2opportunity_partner, self)._create_partner(
             lead_id, action, partner_id, context=context)
