@@ -17,6 +17,23 @@ class CrmLead(models.Model):
     def create(self, vals):
         return super(CrmLead, self).create(vals)
 
+    @api.multi
+    def handle_partner_assignation(self, action='create',
+                                   partner_id=False, context=None):
+        partner_ids = super(CrmLead, self).handle_partner_assignation(
+            action=action, partner_id=partner_id, context=context)
+
+        for lead in self:
+            if lead.contact_name and lead.email_from and action == 'exist':
+                partner_id = partner_ids[lead.id]
+                partners = self.env['res.partner'].search([('parent_id', '=', partner_id),
+                                                           ('email', '=', lead.email_from)])
+                if len(partners) == 0:
+                    self._lead_create_contact(
+                        lead, lead.contact_name, False, partner_id)
+
+        return partner_ids
+
     @api.model
     def _lead_create_contact(self, lead, name, is_company, parent_id=False):
         partner_id = super(CrmLead, self)._lead_create_contact(
