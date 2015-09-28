@@ -22,7 +22,7 @@
     'author': "TrustCode",
     'description': 'Módulo que cria rotas para os produtos',
     'website': 'http://www.trustcode.com.br',
-    'depends': ['sale'],
+    'depends': ['sale', 'website_sale'],
     'data': [
         'views/product_template_view.xml',
         'views/page_redirect_view.xml',

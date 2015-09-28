@@ -19,11 +19,13 @@ class RoutesRedirect(http.Controller):
     @http.route(['/produto/<string:categoria>/<string:produto>'],
                 type='http', auth="public", website=True)
     def redirect_product(self, categoria, produto):
-        prod_env = request.env['product.template'].sudo()
+        prod_env = request.env['product.template'].sudo()        
+        categ_env = request.env['product.public.category'].sudo()
+        categ = categ_env.search([('rota', '=', categoria)])        
         item = prod_env.search([('rota', '=', produto),
-                                ('categ_id.rota', '=', categoria)])
-        if item:
-            url = "/shop/product/%s" % slug(item)
+                                ('public_categ_ids', 'in', categ.ids)])        
+        if len(item) >= 1:
+            url = "/shop/product/%s" % slug(item[0])
             return http.redirect_with_hash(url)
         else:
             return request.website.render("website_sale.404")
@@ -31,7 +33,7 @@ class RoutesRedirect(http.Controller):
     @http.route(['/categoria-produto/<string:categoria>'],
                 type='http', auth="public", website=True)
     def redirect_category(self, categoria):
-        prod_env = request.env['product.category'].sudo()
+        prod_env = request.env['product.public.category'].sudo()
         item = prod_env.search([('rota', '=', categoria)])
         if len(item) >= 1:
             url = "/shop/category/%s" % slug(item[0])

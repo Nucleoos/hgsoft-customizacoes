@@ -33,6 +33,10 @@ class ProductCategory(models.Model):
     
     rota = fields.Char(u'Url antiga', size=200)
     
+class ProductPublicCategory(models.Model):
+    _inherit = 'product.public.category'
+    
+    rota = fields.Char(u'Url antiga', size=200)
 
     
 
